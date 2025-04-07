@@ -1,0 +1,12 @@
+syntax = "proto3";  // 使用proto3语法
+
+package events;  // 定义包名
+
+// 定义EventSpec消息
+message EventSpec {
+    string eventUUID = 1;          // 事件唯一标识符
+    string eventDescription = 2;   // 事件描述
+    string eventHref = 3;          // 事件链接
+    bool isPrimary = 4;            // 是否为主要事件
+    string imageHash = 5;          // 可选的图片哈希值
+}
