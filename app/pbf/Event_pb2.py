@@ -24,13 +24,15 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0fpbf/Event.proto\x12\x06\x65vents\"q\n\tEventSpec\x12\x11\n\teventUUID\x18\x01 \x01(\t\x12\x18\n\x10\x65ventDescription\x18\x02 \x01(\t\x12\x11\n\teventHref\x18\x03 \x01(\t\x12\x11\n\tisPrimary\x18\x04 \x01(\x08\x12\x11\n\timageHash\x18\x05 \x01(\tb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0fpbf/Event.proto\x12\x06\x65vents\"\x85\x01\n\tEventSpec\x12\x11\n\teventUUID\x18\x01 \x01(\t\x12\x12\n\neventTitle\x18\x02 \x01(\t\x12\x18\n\x10\x65ventDescription\x18\x03 \x01(\t\x12\x11\n\teventHref\x18\x04 \x01(\t\x12\x11\n\teventTime\x18\x05 \x01(\t\x12\x11\n\timageHash\x18\x06 \x01(\t\".\n\tEventList\x12!\n\x06\x65vents\x18\x01 \x03(\x0b\x32\x11.events.EventSpecb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'pbf.Event_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
-  _globals['_EVENTSPEC']._serialized_start=27
-  _globals['_EVENTSPEC']._serialized_end=140
+  _globals['_EVENTSPEC']._serialized_start=28
+  _globals['_EVENTSPEC']._serialized_end=161
+  _globals['_EVENTLIST']._serialized_start=163
+  _globals['_EVENTLIST']._serialized_end=209
 # @@protoc_insertion_point(module_scope)
