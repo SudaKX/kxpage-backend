@@ -7,7 +7,7 @@ from typing import TypedDict, Optional
 from google.protobuf.message import Message
 from uuid import uuid4 as random_uuid, UUID
 from datetime import datetime
-from pbf import Event_pb2
+from .pbf import Event_pb2
 
 class StorageInfo(TypedDict):
     size: int
@@ -137,7 +137,7 @@ class KXPageClient:
         pack.token = self._admin_hash
         pack.event.eventUUID = uuid
         if event_time: pack.event.eventTime = event_time.strftime("%Y-%m-%d %H:%M:%S")
-        if event_title: pack.event.eventTittle = event_title
+        if event_title: pack.event.eventTitle = event_title
         if event_href: pack.event.eventHref = event_href
         if event_description: pack.event.eventDescription = event_description
         if image_hash: pack.event.imageHash = image_hash
@@ -161,8 +161,6 @@ class KXPageClient:
             event["uuid"] = str(random_uuid())
             event.setdefault("time", now_str)
             event.setdefault("description", "没有介绍哦~ T^T")
-            if path := event.get("image", None):
-                event["image"] = self.upload_image(path)["message"]
         
         pack: Message = Event_pb2.EventPost()
         pack.token = self._admin_hash
@@ -219,11 +217,11 @@ class KXPageClient:
             return {
                 "size": result.size,
                 "count": result.count,
-                "files": result.files
+                "files": list(result.files)
             }
         else:
             return {
-                "size": 0,
+                "size": -1,
                 "count": 0,
                 "files": []
             } 
