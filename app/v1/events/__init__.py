@@ -106,10 +106,13 @@ async def put_event(data: Annotated[bytes, Body()]):
     changes = []
     uuid = message.event.eventUUID
     if m := message.event.eventTitle: changes.append(f"ev_title='{m}'")
-    if m := message.event.eventHref: changes.append(f"ev_href='{m}'")
     if m := message.event.eventTime: changes.append(f"ev_time='{m}'")
-    if m := message.event.eventDescription: changes.append(f"ev_desc='{m}'")
-    if m := message.event.imageHash: changes.append(f"image_hash='{m}'")
+    m = message.event.eventHref or ''
+    changes.append(f"ev_href='{m}'")
+    m = message.event.eventDescription or ''
+    changes.append(f"ev_desc='{m}'")
+    m = message.event.imageHash or ''
+    changes.append(f"image_hash='{m or ''}'")
     set_clause = "SET " + ','.join(changes)
     
     def executor() -> None:
